@@ -84,7 +84,7 @@ def glm_gaussian():
     plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
     plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
         
-    plt.xlabel("Time since first post (2023)")
+    plt.xlabel("Time in months since first post (2023)")
     plt.ylabel("Positive sentiment score")
     plt.title("GLM Fitted Line for Positive")
     plt.legend()
@@ -106,7 +106,7 @@ def glm_gaussian():
     plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
     plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
         
-    plt.xlabel("Time since first post (2023)")
+    plt.xlabel("Time in months since first post (2023)")
     plt.ylabel("Negative sentiment score")
     plt.title("GLM Fitted Line for Negative")
     plt.legend()
