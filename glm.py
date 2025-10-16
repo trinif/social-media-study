@@ -5,6 +5,7 @@ from datetime import datetime
 import numpy as np
 from matplotlib import pyplot as plt
 import os
+from scipy import stats
 
 # read in CSV
 def read_csv():
@@ -78,6 +79,24 @@ def glm_gaussian():
     res = glm_positive.fit()
     with open(file_name, "a", encoding="utf-8") as file:
         file.write(res.summary().as_text())
+    
+    X_null = np.ones((len(y), 1)) 
+
+    null_positive = sm.GLM(y, X_null, family=sm.families.Gaussian()) # X[:,0]*0 creates a column of zeros for the intercept
+    null_results = null_positive.fit()
+    
+    # Perform the Likelihood Ratio Test
+    LR = 2 * (res.llf - null_results.llf)
+
+    # Degrees of freedom difference
+    df_diff = res.df_model - null_results.df_model
+
+    # p-value
+    p_value = stats.chi2.sf(LR, df_diff)
+    with open(file_name, "a", encoding="utf-8") as file:
+        file.write(f"LR statistic: {LR:.4f} \n")
+        file.write(f"df difference: {df_diff} \n")
+        file.write(f"LRT p-value: {p_value:.6g} \n")
         
     predicted = res.predict(x)
         
@@ -94,12 +113,29 @@ def glm_gaussian():
 
     plt.close()
 
-    x = sm.add_constant(df[["timestamp_diff"]]) # adds constant for intercept
     y = df['negative']
     glm_negative = sm.GLM(y, x, family=sm.families.Gaussian())
     res = glm_negative.fit()
     with open(file_name, "a", encoding="utf-8") as file:
         file.write(res.summary().as_text())
+    
+    X_null = np.ones((len(y), 1)) 
+    
+    null_negative = sm.GLM(y, X_null, family=sm.families.Gaussian()) # X[:,0]*0 creates a column of zeros for the intercept
+    null_results = null_negative.fit()
+    
+    # Perform the Likelihood Ratio Test
+    LR = 2 * (res.llf - null_results.llf)
+
+    # Degrees of freedom difference
+    df_diff = res.df_model - null_results.df_model
+
+    # p-value
+    p_value = stats.chi2.sf(LR, df_diff)
+    with open(file_name, "a", encoding="utf-8") as file:
+        file.write(f"LR statistic: {LR:.4f} \n")
+        file.write(f"df difference: {df_diff} \n")
+        file.write(f"LRT p-value: {p_value:.6g} \n")
         
     predicted = res.predict(x)
         
