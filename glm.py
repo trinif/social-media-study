@@ -18,7 +18,7 @@ def convert_timestamp(filename: str):
     return datetime_obj
 
 def get_seance_components():
-    csv = "seance_autizzy_test_results.csv"
+    csv = "seance_autizzy_w_negation.csv"
     large_df = pd.read_csv(csv)
     indices = [0, 1] + [i for i in range(-20, 0)]
     print(indices)
@@ -26,23 +26,27 @@ def get_seance_components():
     df['filename'] = df['filename'].apply(convert_timestamp)
     df = df.rename(columns={'filename': 'timestamp'})
 
-    df.to_csv("seance_autizzy_test_results_cleaned.csv")
+    df.to_csv("seance_autizzy_test_results_cleaned_w_negation.csv")
     
 
 def timestamp_as_num():
-    csv = "seance_autizzy_test_results_cleaned.csv"
+    csv = "seance_autizzy_test_results_cleaned_w_negation.csv"
     df = pd.read_csv(csv, index_col=0)
 
     df['timestamp'] = pd.to_datetime(df['timestamp'])
 
     min_time = df['timestamp'].min()
 
-    df['timestamp_diff'] = (df['timestamp'] - min_time).dt.total_seconds().astype(int)
+    new_df = pd.DataFrame()
 
-    timestamp_diff = df.pop('timestamp_diff')
-    df.insert(0, 'timestamp_diff', timestamp_diff)
+    # in terms of months rather than seconds
+    new_df['timestamp_diff'] = ((df['timestamp'] - min_time).dt.days / 30).astype(int)
+    positive_list = ['joy_component', 'politeness_component', 'positive_adjectives_component', 'positive_nouns_component', 'positive_verbs_component', 'respect_component', 'trust_verbs_component', 'virtue_adverbs_component', 'well_being_component']
+    negative_list = ['negative_adjectives_component', 'failure_component', 'fear_and_digust_component']
+    new_df['positive'] = df[positive_list].sum(axis=1) / len(positive_list)
+    new_df['negative'] = df[negative_list].sum(axis=1) / len(negative_list)
 
-    df.to_csv("seance_autizzy_test_results_cleaned.csv")
+    new_df.to_csv("seance_autizzy_test_results_cleaned_w_negation.csv")
 
 def check_nans_infs():
     csv = "seance_autizzy_test_results_cleaned.csv"
@@ -62,34 +66,55 @@ def check_nans_infs():
 
 # Poisson distribution
 def glm_gaussian():
-    csv = "seance_autizzy_test_results_cleaned.csv"
+    csv = "seance_autizzy_test_results_cleaned_w_negation.csv"
     df = pd.read_csv(csv)
-    file_name = "autizzy_glm_gaussian.txt"
+    file_name = "autizzy_glm_gaussian_positive_and_negative.txt"
 
-    subdirectory = "gaussian_plots"
+    subdirectory = "gaussian_plots_grouped"
 
-    for i in range(-20, 0):
-        x = sm.add_constant(df[["timestamp_diff"]]) # adds constant for intercept
-        y = df.iloc[:, i]
-        glm = sm.GLM(y, x, family=sm.families.Gaussian())
-        res = glm.fit()
-        with open(file_name, "a", encoding="utf-8") as file:
-            file.write(res.summary().as_text())
+    x = sm.add_constant(df[["timestamp_diff"]]) # adds constant for intercept
+    y = df['positive']
+    glm_positive = sm.GLM(y, x, family=sm.families.Gaussian())
+    res = glm_positive.fit()
+    with open(file_name, "a", encoding="utf-8") as file:
+        file.write(res.summary().as_text())
         
-        predicted = res.predict(x)
+    predicted = res.predict(x)
         
-        plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
-        plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
+    plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
+    plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
         
-        plt.xlabel("Time since first post (2023)")
-        plt.ylabel("Sentiment score")
-        plt.title("GLM Fitted Line for " + y.name)
-        plt.legend()
+    plt.xlabel("Time since first post (2023)")
+    plt.ylabel("Positive sentiment score")
+    plt.title("GLM Fitted Line for Positive")
+    plt.legend()
 
-        img_name = os.path.join(subdirectory, y.name + ".png")
-        plt.savefig(img_name)
+    img_name = os.path.join(subdirectory, "positive.png")
+    plt.savefig(img_name)
 
-        plt.close()
+    plt.close()
+
+    x = sm.add_constant(df[["timestamp_diff"]]) # adds constant for intercept
+    y = df['negative']
+    glm_negative = sm.GLM(y, x, family=sm.families.Gaussian())
+    res = glm_negative.fit()
+    with open(file_name, "a", encoding="utf-8") as file:
+        file.write(res.summary().as_text())
+        
+    predicted = res.predict(x)
+        
+    plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
+    plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
+        
+    plt.xlabel("Time since first post (2023)")
+    plt.ylabel("Negative sentiment score")
+    plt.title("GLM Fitted Line for Negative")
+    plt.legend()
+
+    img_name = os.path.join(subdirectory, "negative.png")
+    plt.savefig(img_name)
+
+    plt.close()
 
 async def main():
     # clean autizzy cleaned output
