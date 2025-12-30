@@ -1,0 +1,38 @@
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                   54
+Model:                            GLM   Df Residuals:                       52
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.022017
+Method:                          IRLS   Log-Likelihood:                 27.427
+Date:                Fri, 05 Dec 2025   Deviance:                       1.1449
+Time:                        02:37:41   Pearson chi2:                     1.14
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.1586
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0270      0.055     -0.494      0.622      -0.134       0.080
+timestamp_diff     0.0032      0.001      3.047      0.002       0.001       0.005
+==================================================================================LR statistic: 8.8718 
+df difference: 1 
+LRT p-value: 0.00289615 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                   54
+Model:                            GLM   Df Residuals:                       52
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                         0.10012
+Method:                          IRLS   Log-Likelihood:                -13.467
+Date:                Fri, 05 Dec 2025   Deviance:                       5.2063
+Time:                        02:37:42   Pearson chi2:                     5.21
+No. Iterations:                     3   Pseudo R-squ. (CS):           0.001028
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const              0.0654      0.117      0.560      0.575      -0.163       0.294
+timestamp_diff     0.0003      0.002      0.133      0.895      -0.004       0.005
+==================================================================================LR statistic: 0.0182 
+df difference: 1 
+LRT p-value: 0.892599 

@@ -6,6 +6,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os
 from scipy import stats
+import matplotlib.dates as mdates
 
 # read in CSV
 def read_csv():
@@ -18,20 +19,26 @@ def convert_timestamp(filename: str):
     datetime_obj = datetime.strptime(filename[:n], "%Y-%m-%d_%H_%M_%S")
     return datetime_obj
 
-def get_seance_components():
-    csv = "seance_autizzy_w_negation.csv"
-    large_df = pd.read_csv(csv)
-    indices = [0, 1] + [i for i in range(-20, 0)]
-    print(indices)
-    df = large_df.iloc[:, indices]
+def get_seance_components(csv):
+    # for sentiment analysis with more than 20 components
+    # large_df = pd.read_csv(csv)
+    # indices = [0, 1] + [i for i in range(-20, 0)]
+    # print(indices)
+    # df = large_df.iloc[:, indices]
+
+    df = pd.read_csv(csv)
     df['filename'] = df['filename'].apply(convert_timestamp)
     df = df.rename(columns={'filename': 'timestamp'})
 
-    df.to_csv("seance_autizzy_test_results_cleaned_w_negation.csv")
+    index = csv.index('.')
+    new_csv = csv[:index] + "_cleaned" + csv[index:]
+
+    df.to_csv(new_csv)
+
+    return new_csv
     
 
-def timestamp_as_num():
-    csv = "seance_autizzy_test_results_cleaned_w_negation.csv"
+def timestamp_as_num(csv):
     df = pd.read_csv(csv, index_col=0)
 
     df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -42,12 +49,13 @@ def timestamp_as_num():
 
     # in terms of months rather than seconds
     new_df['timestamp_diff'] = ((df['timestamp'] - min_time).dt.days / 30).astype(int)
+    new_df['timestamp'] = df['timestamp']
     positive_list = ['joy_component', 'politeness_component', 'positive_adjectives_component', 'positive_nouns_component', 'positive_verbs_component', 'respect_component', 'trust_verbs_component', 'virtue_adverbs_component', 'well_being_component']
     negative_list = ['negative_adjectives_component', 'failure_component', 'fear_and_digust_component']
     new_df['positive'] = df[positive_list].sum(axis=1) / len(positive_list)
     new_df['negative'] = df[negative_list].sum(axis=1) / len(negative_list)
 
-    new_df.to_csv("seance_autizzy_test_results_cleaned_w_negation.csv")
+    new_df.to_csv(csv)
 
 def check_nans_infs():
     csv = "seance_autizzy_test_results_cleaned.csv"
@@ -66,14 +74,20 @@ def check_nans_infs():
     df.to_csv("seance_autizzy_test_results_cleaned.csv")
 
 # Poisson distribution
-def glm_gaussian():
-    csv = "seance_autizzy_test_results_cleaned_w_negation.csv"
+def glm_gaussian(csv, tag):
     df = pd.read_csv(csv)
-    file_name = "autizzy_glm_gaussian_positive_and_negative.txt"
+    file_name = "seance/" + tag + "_glm_gaussian_positive_and_negative.txt"
 
     subdirectory = "gaussian_plots_grouped"
 
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+    locator = mdates.MonthLocator(interval=4)
+    minor_locator = mdates.MonthLocator()
+    formatter = mdates.DateFormatter('%Y-%m-%d')
+
     x = sm.add_constant(df[["timestamp_diff"]]) # adds constant for intercept
+    # TODO: add in another predictor for interaction (girl or woman)
     y = df['positive']
     glm_positive = sm.GLM(y, x, family=sm.families.Gaussian())
     res = glm_positive.fit()
@@ -99,19 +113,27 @@ def glm_gaussian():
         file.write(f"LRT p-value: {p_value:.6g} \n")
         
     predicted = res.predict(x)
-        
-    plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
-    plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
-        
-    plt.xlabel("Time in months since first post (2023)")
-    plt.ylabel("Positive sentiment score")
-    plt.title("GLM Fitted Line for Positive")
-    plt.legend()
 
-    img_name = os.path.join(subdirectory, "positive.png")
-    plt.savefig(img_name)
+    fig, ax = plt.subplots()
+    ax.scatter(df["timestamp"], y, label="Data", color="blue", alpha=0.6)
+    ax.plot(df["timestamp"], predicted, label="Fitted Line", color="red", linewidth=2)
 
-    plt.close()
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_minor_locator(minor_locator)
+    ax.xaxis.set_major_formatter(formatter)
+    ax.tick_params(axis='x', labelsize=6)
+
+    fig.autofmt_xdate()
+        
+    ax.set_xlabel("Date of post")
+    ax.set_ylabel("Positive sentiment score")
+    ax.set_title("GLM Fitted Line for Positive")
+    ax.legend()
+
+    img_name = os.path.join(subdirectory, tag + "_positive.png")
+    fig.savefig(img_name)
+
+    plt.close(fig)
 
     y = df['negative']
     glm_negative = sm.GLM(y, x, family=sm.families.Gaussian())
@@ -138,25 +160,39 @@ def glm_gaussian():
         file.write(f"LRT p-value: {p_value:.6g} \n")
         
     predicted = res.predict(x)
-        
-    plt.scatter(df["timestamp_diff"], y, label="Data", color="blue", alpha=0.6)
-    plt.plot(df["timestamp_diff"], predicted, label="Fitted Line", color="red", linewidth=2)
-        
-    plt.xlabel("Time in months since first post (2023)")
-    plt.ylabel("Negative sentiment score")
-    plt.title("GLM Fitted Line for Negative")
-    plt.legend()
 
-    img_name = os.path.join(subdirectory, "negative.png")
-    plt.savefig(img_name)
+    # edited to plot timestamps instead of timestamp_diff
+    fig, ax = plt.subplots()
+    ax.scatter(df["timestamp"], y, label="Data", color="blue", alpha=0.6)
+    ax.plot(df["timestamp"], predicted, label="Fitted Line", color="red", linewidth=2)
 
-    plt.close()
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_minor_locator(minor_locator)
+    ax.xaxis.set_major_formatter(formatter)
+    ax.tick_params(axis='x', labelsize=6)
+
+    fig.autofmt_xdate()
+        
+    ax.set_xlabel("Date of post")
+    ax.set_ylabel("Negative sentiment score")
+    ax.set_title("GLM Fitted Line for Negative")
+    ax.legend()
+
+    img_name = os.path.join(subdirectory, tag + "_negative.png")
+    fig.savefig(img_name)
+
+    plt.close(fig)
 
 async def main():
-    # clean autizzy cleaned output
-    # get_seance_components()
-    # timestamp_as_num()
-    # check_nans_infs()
-    glm_gaussian()
+    # clean output
+    # csvs = ["seance/seance_instagram_blackautisticgirl_girls.csv", "seance/seance_instagram_blackautisticwoman_women.csv"]
+    # for csv in csvs:
+    #     new_csv = get_seance_components(csv)
+    #     timestamp_as_num(new_csv)
+
+    # GLM
+    csvs_tags = [("seance/seance_instagram_blackautisticgirl_girls_cleaned.csv", "instagram_blackautisticgirl_girls"), ("seance/seance_instagram_blackautisticwoman_women_cleaned.csv", "instagram_blackautisticwoman_women")]
+    for (csv, tag) in csvs_tags:
+        glm_gaussian(csv, tag)
 
 asyncio.run(main())

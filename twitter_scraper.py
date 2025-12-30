@@ -16,25 +16,22 @@ client = Client('en-US')
 async def main():
 
     # Access variables - make diff account?
-    username = os.getenv("USERNAME")
-    email = os.getenv("EMAIL")
-    pwd = os.getenv("PASSWORD")
     
     # Login with cookies
-    # client.load_cookies('cookies.json')
+    client.load_cookies('cookies.json')
 
-    # Login manually
-    await client.login(
-        auth_info_1=username,
-        auth_info_2=email,
-        password=pwd
-    )
+    # Login manually with .env variables
+    # await client.login(
+    #     auth_info_1=username,
+    #     auth_info_2=email,
+    #     password=pwd
+    # )
 
-    client.save_cookies('cookies.json')
+    # client.save_cookies('cookies.json')
 
     # Get tweets
     # Count var doesn't seem to work?
-    tweets = await client.search_tweet('Autizzy', 'Latest', count=10)
+    tweets = await client.search_tweet('BlackAutisticWomen', 'Latest', count=10)
     i = 0
 
     df = pd.DataFrame()
@@ -48,12 +45,16 @@ async def main():
         i += 1
         
         if len(df) >= 50:
-            df.to_csv('latest_autizzy.csv', mode='a', headers=False)
+            df.to_csv('latest_blackautisticwomen_112125.csv', mode='a', header=False)
             df = pd.DataFrame() # reset DF
             time.sleep(15 * 60) # avoid rate limit by waiting 15 minutes
         else:
             tweets = await tweets.next()
 
-    df.to_csv('latest_autizzy.csv', mode='a', headers=False)
+    df.to_csv('latest_blackautisticwomen_112125.csv', mode='a', header=False)
+
+# hashtags to try:
+# blackautisticgirls
+# blackautisticwomen
 
 asyncio.run(main())

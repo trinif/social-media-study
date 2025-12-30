@@ -1,0 +1,380 @@
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:18:05   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:18:08   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:23:15   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:25:20   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:25:20   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:30:11   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:30:11   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:33:48   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:33:48   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:34:46   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:34:46   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:36:31   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:36:31   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:39:00   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:40:02   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:40:03   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:40:45   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:40:46   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               positive   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                       0.0078481
+Method:                          IRLS   Log-Likelihood:                 179.86
+Date:                Fri, 19 Dec 2025   Deviance:                       1.3813
+Time:                        09:41:35   Pearson chi2:                     1.38
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.5185
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0153      0.018     -0.827      0.408      -0.051       0.021
+timestamp_diff     0.0054      0.000     11.406      0.000       0.004       0.006
+==================================================================================LR statistic: 98.5051 
+df difference: 1 
+LRT p-value: 3.2419e-23 
+                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:               negative   No. Observations:                  178
+Model:                            GLM   Df Residuals:                      176
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                        0.011158
+Method:                          IRLS   Log-Likelihood:                 148.55
+Date:                Fri, 19 Dec 2025   Deviance:                       1.9637
+Time:                        09:41:36   Pearson chi2:                     1.96
+No. Iterations:                     3   Pseudo R-squ. (CS):             0.2603
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -0.0303      0.022     -1.378      0.168      -0.073       0.013
+timestamp_diff    -0.0041      0.001     -7.325      0.000      -0.005      -0.003
+==================================================================================LR statistic: 47.3661 
+df difference: 1 
+LRT p-value: 5.88929e-12 

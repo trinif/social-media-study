@@ -12,10 +12,10 @@ def users_in_common():
     print(value_counts)
 
 def csv_to_txt():
-    csv = "test_output_top_autizzy.csv"
+    csv = "instagram_blackautisticwomen_113025.csv"
     df = pd.read_csv(csv)
 
-    subdirectory = "top_autizzy_texts"
+    subdirectory = "instagram_blackautisticwomen_113025"
 
     # iterate over df and make txt file for each
     # row[3] describes Created At (timestamp)
@@ -23,7 +23,7 @@ def csv_to_txt():
         file_name = row[3].replace(" ", "_").replace(":", "_") + ".txt" # replace with underscores
         file_path = os.path.join(subdirectory, file_name)
         with open(file_path, "w", encoding="utf-8", errors="replace") as file:
-            file.write(row.Text)
+            file.write(row[2]) # text
 
 def csv_sum():
     csv = "seance_autizzy_test_results.csv"
@@ -33,7 +33,7 @@ def csv_sum():
 
 async def main():
     # users_in_common()
-    # csv_to_txt()
-    csv_sum()
+    csv_to_txt()
+    # csv_sum()
 
 asyncio.run(main())
